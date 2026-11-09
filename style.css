@@ -1,0 +1,153 @@
+
+/* MIDNIGHT AMETHYST THEME */
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+   background-color: #100d18;
+
+    background-image:
+    radial-gradient(circle, rgba(198, 155, 255, 0.13) 1px, transparent 1px),
+    radial-gradient(circle at 15% 20%, rgba(132, 65, 210, 0.16), transparent 35%),
+    radial-gradient(circle at 85% 80%, rgba(100, 55, 170, 0.15), transparent 35%);
+
+    background-size:
+    35px 35px,
+    auto,
+    auto;
+
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.game-container {
+    background: #1b1625;
+    width: 400px;
+    max-width: 100%;
+    padding: 30px;
+    border-radius: 22px;
+    text-align: center;
+    border: 1px solid #382849;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #c69bff;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #a99bb9;
+    margin-bottom: 25px;
+}
+
+.game-info {
+    background: #292137;
+    padding: 12px;
+    border-radius: 14px;
+    color: #d7b8ff;
+}
+
+.game-info p {
+    margin: 10px;
+}
+
+#word {
+    font-size: 35px;
+    letter-spacing: 8px;
+    color: #c69bff;
+    margin: 35px 0;
+    overflow-wrap: anywhere;
+}
+
+#message {
+    color: #c3b7d0;
+    min-height: 20px;
+}
+
+.input-area {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+}
+
+#guess {
+    min-width: 0;
+    width: 60%;
+    padding: 12px;
+    background: #292137;
+    color: white;
+    border: 2px solid #69458d;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+#guess:focus {
+    border-color: #c69bff;
+}
+
+#guess::placeholder {
+    color: #998ba9;
+}
+
+button {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    background: #9855e8;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+button:hover:not(:disabled) {
+    background: #b47aff;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background: #51465d;
+    color: #aaa0b3;
+    cursor: not-allowed;
+}
+
+#hintButton {
+    background: #6740a0;
+}
+
+#hintButton:hover:not(:disabled) {
+    background: #8556c4;
+}
+
+#restartButton {
+    background: #393342;
+}
+
+#restartButton:hover:not(:disabled) {
+    background: #51465d;
+}
+
+.buttons {
+    margin-top: 15px;
+}
+
+@media (max-width: 450px) {
+    .game-container {
+        padding: 20px;
+    }
+
+    #word {
+        font-size: 27px;
+        letter-spacing: 5px;
+    }
+}
