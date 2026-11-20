@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Birthday Magic ✦</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+  :root {
+    --night: #090d24;
+    --violet: #24204d;
+    --pink: #ffb7d5;
+    --gold: #ffe6a6;
+    --cream: #fff7ee;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    background:
+      radial-gradient(ellipse at 50% 110%, #53356e 0%, transparent 48%),
+      radial-gradient(ellipse at 15% 10%, #24295a 0%, transparent 38%),
+      linear-gradient(160deg, #080c22, #171333 60%, #27183d);
+  }
+
+  .sky, .sky::before, .sky::after {
+    position: fixed; inset: 0; pointer-events: none;
+  }
+  .sky::before {
+    content: ""; opacity: .75;
+    background-image:
+      radial-gradient(2px 2px at 8% 18%, #fff 98%, transparent),
+      radial-gradient(1px 1px at 21% 72%, #fff 98%, transparent),
+      radial-gradient(2px 2px at 35% 27%, #ffe7ad 98%, transparent),
+      radial-gradient(1px 1px at 48% 13%, #fff 98%, transparent),
+      radial-gradient(2px 2px at 66% 31%, #fff 98%, transparent),
+      radial-gradient(1px 1px at 78% 17%, #fff 98%, transparent),
+      radial-gradient(2px 2px at 91% 54%, #ffe7ad 98%, transparent),
+      radial-gradient(1px 1px at 13% 48%, #fff 98%, transparent),
+      radial-gradient(1px 1px at 57% 81%, #fff 98%, transparent),
+      radial-gradient(2px 2px at 83% 85%, #fff 98%, transparent);
+    animation: twinkle 4s ease-in-out infinite alternate;
+  }
+  .sky::after {
+    content: ""; opacity: .22;
+    background: radial-gradient(ellipse at 50% 50%, #a58bff 0%, transparent 65%);
+    filter: blur(45px);
+  }
+  @keyframes twinkle { from {opacity:.35} to {opacity:.9} }
+
+  .moon {
+    position: fixed; width: 82px; height: 82px; border-radius: 50%;
+    top: 8%; right: 12%;
+    background: #fff0c8;
+    box-shadow: 0 0 24px #ffe6a688, 0 0 75px #ffe6a633;
+    opacity: .9;
+  }
+  .moon::after {
+    content: ""; position: absolute; width: 76px; height: 76px;
+    border-radius: 50%; background: #11102f; left: 19px; top: -9px;
+  }
+
+  .firefly {
+    position: fixed; width: 5px; height: 5px; border-radius: 50%;
+    background: #ffe6a6; box-shadow: 0 0 12px 3px #ffe6a677;
+    animation: drift 8s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .f1 {left: 12%; top: 70%}
+  .f2 {left: 84%; top: 66%; animation-delay: -3s}
+  .f3 {left: 72%; top: 39%; animation-delay: -5s}
+  .f4 {left: 27%; top: 35%; animation-delay: -2s}
+  @keyframes drift { to { transform: translate(20px,-35px); opacity:.25 } }
+
+  main {
+    position: relative; z-index: 1; min-height: 100vh;
+    display: grid; place-items: center; padding: 35px 18px;
+  }
+  .screen {
+    width: min(680px, 100%); text-align: center;
+    animation: appear 1s ease both;
+  }
+  @keyframes appear {
+    from { opacity: 0; transform: translateY(18px) scale(.98) }
+    to { opacity: 1; transform: translateY(0) scale(1) }
+  }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .28em;
+    color: var(--gold); font-size: .72rem; font-weight: 700;
+  }
+  h1, h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600; line-height: 1.12;
+  }
+  h1 {
+    font-size: clamp(3rem, 9vw, 5.6rem);
+    margin: 18px 0 10px;
+    background: linear-gradient(110deg, #fff7e8, #ffc2db 48%, #ffe6a6);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 8px 38px #ffb7d522;
+  }
+  .subtitle { color: #d8d0ed; font-size: 1rem; line-height: 1.7; }
+  .name { color: var(--gold); font-style: italic; }
+
+  .envelope-wrap { margin: 36px auto 28px; width: 190px; height: 145px; position: relative; }
+  .envelope {
+    position: absolute; inset: 28px 0 0; height: 112px;
+    background: linear-gradient(145deg, #f6b9d0, #c77da9);
+    border-radius: 9px; box-shadow: 0 18px 45px #0006;
+    overflow: hidden;
+  }
+  .envelope::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(140deg, transparent 49%, #a85f91 50%) left / 50% 100% no-repeat,
+                linear-gradient(220deg, transparent 49%, #b96c9c 50%) right / 50% 100% no-repeat;
+  }
+  .flap {
+    position: absolute; left: 0; top: 28px; width: 0; height: 0;
+    border-left: 95px solid transparent; border-right: 95px solid transparent;
+    border-top: 72px solid #ffd0df; filter: drop-shadow(0 3px 2px #9a5480);
+    transform-origin: top; animation: flap 2.4s ease-in-out infinite alternate;
+  }
+  @keyframes flap { to { transform: rotateX(22deg) } }
+  .seal {
+    position: absolute; left: 50%; top: 77px; transform: translateX(-50%);
+    width: 34px; height: 34px; display: grid; place-items: center;
+    border-radius: 50%; background: #9d477b; color: #ffe5ad; font-size: 17px;
+    box-shadow: 0 3px 10px #6a315b77;
+  }
+
+  .btn {
+    border: 0; cursor: pointer; border-radius: 999px; padding: 14px 25px;
+    color: #2b1735; background: linear-gradient(110deg, #ffe8b0, #ffb9d5);
+    font: 700 .95rem 'DM Sans', sans-serif;
+    box-shadow: 0 8px 28px #ffb7d533;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px #ffb7d555; }
+  .btn:active { transform: scale(.98); }
+  .secondary {
+    color: #fff2f8; background: #ffffff12; border: 1px solid #ffffff35;
+    box-shadow: none;
+  }
+
+  #surprise { display: none; }
+  .card {
+    border: 1px solid #ffffff26; border-radius: 28px; padding: clamp(24px, 5vw, 42px);
+    background: linear-gradient(145deg, #ffffff14, #ffffff08);
+    box-shadow: 0 24px 80px #0005, inset 0 1px #ffffff20;
+    backdrop-filter: blur(12px);
+  }
+  .cat-scene {
+    width: 210px; height: 185px; margin: 0 auto 8px; position: relative;
+    display: grid; place-items: center;
+  }
+  .cat {
+    font-size: 104px; filter: drop-shadow(0 12px 13px #0005);
+    animation: bob 2.8s ease-in-out infinite;
+  }
+  @keyframes bob { 50% { transform: translateY(-9px) rotate(-2deg) } }
+  .rose {
+    position: absolute; font-size: 47px; right: 12px; bottom: 23px;
+    transform: rotate(-22deg); animation: rose 2.8s ease-in-out infinite;
+    filter: drop-shadow(0 5px 9px #0005);
+  }
+  @keyframes rose { 50% { transform: rotate(-8deg) translateY(-7px) } }
+  .sparkle { position: absolute; color: var(--gold); animation: sparkle 2s infinite ease-in-out; }
+  .s1 {top: 8px; left: 25px}
+  .s2 {right: 15px; top: 30px; animation-delay: .7s}
+  .s3 {left: 20px; bottom: 20px; animation-delay: 1.2s}
+  @keyframes sparkle { 50% {opacity:.25; transform: scale(.7) rotate(35deg)} }
+
+  #surprise h2 {
+    font-size: clamp(2.5rem, 8vw, 4.4rem); margin: 6px 0 12px;
+    color: #ffe2ed; text-shadow: 0 0 30px #ffafd544;
+  }
+  .wish { color: #e5d9ef; line-height: 1.8; max-width: 470px; margin: 0 auto 24px; }
+  .question {
+    margin: 28px 0 17px; color: var(--gold);
+    font-family: 'Playfair Display', Georgia, serif; font-size: 1.45rem;
+  }
+  .choices { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+  #reply {
+    min-height: 32px; margin-top: 22px; color: #ffd2e5;
+    font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem;
+  }
+  .tiny { margin-top: 26px; color: #bdb4d4; font-size: .76rem; letter-spacing: .06em; }
+
+  .petal {
+    position: fixed; top: -25px; z-index: 3; pointer-events: none;
+    animation: fall linear forwards; opacity: .9;
+  }
+  @keyframes fall { to { transform: translateY(110vh) rotate(500deg); opacity: .1 } }
+
+  @media (max-width: 480px) {
+    .moon { width: 58px; height: 58px; right: 8%; top: 5% }
+    .moon::after { width: 54px; height: 54px; left: 14px; top: -7px }
+    .card { border-radius: 22px }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<div class="sky"></div>
+<div class="moon"></div>
+<div class="firefly f1"></div><div class="firefly f2"></div>
+<div class="firefly f3"></div><div class="firefly f4"></div>
+
+<main>
+  <section class="screen" id="opening">
+    <div class="eyebrow">✦ a tiny universe made for you ✦</div>
+    <h1>Happy<br>Birthday</h1>
+    <div class="subtitle">Tonight, the stars have a little secret...</div>
+    <div class="name" style="font-family:'Playfair Display',serif;font-size:2rem;margin-top:8px;">BROSKII</div>
+    <div class="envelope-wrap" aria-hidden="true">
+      <div class="envelope"></div>
+      <div class="flap"></div>
+      <div class="seal">✦</div>
+    </div>
+    <p class="subtitle">A little wish is waiting inside.</p>
+    <button class="btn" id="openBtn">Open your surprise ✨</button>
+  </section>
+
+  <section class="screen" id="surprise">
+    <div class="card">
+      <div class="eyebrow">✦ delivered by moonlight ✦</div>
+      <div class="cat-scene" aria-label="A cute cat holding a rose">
+        <span class="sparkle s1">✧</span><span class="sparkle s2">✦</span><span class="sparkle s3">✧</span>
+        <div class="cat">🐱</div>
+        <div class="rose">🌹</div>
+      </div>
+      <h2>Happy Birthday<br><span class="name">BROSKII</span>!</h2>
+      <p class="wish">May your days be sprinkled with little joys, your dreams find their way to you, and your year glow brighter than all the stars tonight. Here's a rose, just for you. 🌷</p>
+      <div class="question">Do you like my gift?</div>
+      <div class="choices">
+        <button class="btn" id="yesBtn">Of course! 💗</button>
+        <button class="btn secondary" id="noBtn">Not really 🙈</button>
+      </div>
+      <div id="reply" aria-live="polite"></div>
+      <div class="tiny">made with a little magic & a lot of thought ✦</div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const opening = document.getElementById('opening');
+  const surprise = document.getElementById('surprise');
+
+  function petals(count = 24) {
+    const symbols = ['✿', '✧', '❀', '♥'];
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('span');
+      p.className = 'petal';
+      p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.fontSize = (12 + Math.random() * 15) + 'px';
+      p.style.color = Math.random() > .5 ? '#ffc5dc' : '#ffe6a6';
+      p.style.animationDuration = (5 + Math.random() * 5) + 's';
+      p.style.animationDelay = (Math.random() * 2) + 's';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 11000);
+    }
+  }
+
+  document.getElementById('openBtn').addEventListener('click', () => {
+    opening.style.display = 'none';
+    surprise.style.display = 'block';
+    surprise.style.animation = 'appear .9s ease both';
+    petals(38);
+  });
+
+  document.getElementById('yesBtn').addEventListener('click', () => {
+    document.getElementById('reply').textContent = 'YAY! You just made this little corner of the universe brighter! 💖';
+    petals(30);
+  });
+
+  document.getElementById('noBtn').addEventListener('click', () => {
+    document.getElementById('reply').textContent = 'Hmm… the cat is asking for one more chance. 🥺🌹';
+  });
+</script>
+</body>
+</html>
